@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="header">Todos</div>
+  <div class="input-box">
+    <div class="group">
+      <input type="text" (keydown)="addTodo($event)" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>New Todo</label>
+    </div>
+  </div>
+  <div id="todo-container" *ngFor="let todo of todos">
+    <div class="todo {{todo.finished ? 'finished' : '' }}" id="{{todo.uuid}}" (click)="finishTodo($event)">
+      <div class="title">{{todo.title}}</div>
+      <i class="material-icons delete-icon" (click)="deleteTodo($event)">delete</i>
+    </div>
+  </div>
+  <div class="deleteAllFinished" *ngIf="todos.length > 0">
+    <button (click)="deleteAllFinished()">Delete all finished</button>
+  </div>
+</div>
